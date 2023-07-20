@@ -6,7 +6,7 @@ import com.example.cartservice.model.Cart;
 import java.util.List;
 
 public interface CartService {
-    Cart addCart(Cart cart);
+    String addCart(Cart cart);
 
     List<Cart> findAllCartsById(Integer userId);
 

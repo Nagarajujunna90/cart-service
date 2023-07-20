@@ -12,6 +12,6 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String productId;
-    private Integer customerId;
+    private Integer userId;
 
 }

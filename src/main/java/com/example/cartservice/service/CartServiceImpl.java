@@ -32,27 +32,26 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Cart addCart(Cart cart) {
+    public String addCart(Cart cart) {
         Map<String, Object> pathParams = new HashMap<>();
         pathParams.put("productId", cart.getProductId());
-     //   Mono<Product> product = clientConfig.getProductById("http://localhost:8084/product/v1/product/{productId}", pathParams, Product.class);
-       // product.subscribe(value -> System.out.println(value));
+        //   Mono<Product> product = clientConfig.getProductById("http://localhost:8084/product/v1/product/{productId}", pathParams, Product.class);
+        // product.subscribe(value -> System.out.println(value));
 //        if (cart.getCustomerId() != null) {
 //            User user = userRepository.findById(cart.getCustomerId()).orElse(null);
 //            cart.setUser(user);
 //        }
 
-        return cartRepository.save(cart);
+        cartRepository.save(cart);
 
-        //return cart;
+        return "Product added successfully";
     }
 
     @Override
     public List<Cart> findAllCartsById(Integer userId) {
-      //  List<Product> productList=new ArrayList<>();
-        ExecutorService executorService=Executors.newSingleThreadExecutor();
-        List<Cart> cartList=new ArrayList<>();
-        //= cartRepository.findCartsByUserId(userId);
+        //  List<Product> productList=new ArrayList<>();
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        List<Cart> cartList = cartRepository.findCartsByUserId(userId);
 //        for (Cart cart : Cart) {
 //            Map<String, Object> pathParams = new HashMap<>();
 //            pathParams.put("productId", cart.getProductId());
@@ -72,7 +71,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public String deleteProductFromCart(String productId) {
-       // cartRepository.deleteByProductId(productId);
+         cartRepository.deleteByProductId(productId);
         return "deleted successfully";
     }
 

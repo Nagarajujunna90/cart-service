@@ -10,14 +10,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/emandi/v1")
+@RequestMapping("/cart/v1")
 public class CartController {
 
     @Autowired
     private CartService cartService;
 
     @PostMapping("/cart")
-    public ResponseEntity<Cart> addCart(@RequestBody Cart cart) {
+    public ResponseEntity<?> addCart(@RequestBody Cart cart) {
         return new ResponseEntity<>(cartService.addCart(cart), HttpStatus.OK);
     }
 
@@ -25,6 +25,7 @@ public class CartController {
     public  ResponseEntity<?> findAllCartsById(@PathVariable("userId") Integer userId) {
         return new ResponseEntity<>(cartService.findAllCartsById(userId), HttpStatus.OK);
     }
+
     @DeleteMapping("/cart/{productId}")
     public  ResponseEntity<?> deleteProductByProductId(@PathVariable("productId") String productId) {
         return new ResponseEntity<>(cartService.deleteProductFromCart(productId), HttpStatus.OK);

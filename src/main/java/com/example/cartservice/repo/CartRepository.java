@@ -12,9 +12,9 @@ import java.util.List;
 
 @Repository
 public interface CartRepository extends JpaRepository<Cart, Integer> {
-//    @Query("select c from Cart c where c.user.id=:userId")
-//    List<Cart> findCartsByUserId(@Param("userId") Integer userId);
-//
-//    @Transactional
-//    void deleteByProductId(String productId);
+    @Query("select c from Cart c where c.userId=:userId")
+    List<Cart> findCartsByUserId(@Param("userId") Integer userId);
+
+    @Transactional
+    void deleteByProductId(String productId);
 }

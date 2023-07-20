@@ -6,10 +6,10 @@ import lombok.Data;
 @Data
 public class CartResponse {
     private String productId;
-    private Integer customerId;
+    private Integer cartId;
 
     public CartResponse(Cart cart) {
-        this.customerId=cart.getCustomerId();
+        this.cartId =cart.getUserId();
         this.productId=cart.getProductId();
     }
 }

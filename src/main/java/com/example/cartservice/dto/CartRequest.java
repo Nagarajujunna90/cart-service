@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class CartRequest {
     private String productId;
-    private Integer customerId;
+    private Integer userId;
 }

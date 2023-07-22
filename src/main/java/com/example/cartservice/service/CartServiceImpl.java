@@ -7,7 +7,6 @@ import com.example.cartservice.repo.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +19,8 @@ public class CartServiceImpl implements CartService {
     private CartRepository cartRepository;
     @Autowired
     private ClientConfig clientConfig;
+    @Autowired
+    private EventServiceLog eventServiceLog;
 
 
 //    @Autowired
@@ -42,8 +43,9 @@ public class CartServiceImpl implements CartService {
 //            cart.setUser(user);
 //        }
 
-        cartRepository.save(cart);
 
+        Cart cart1 = cartRepository.save(cart);
+        eventServiceLog.addEvent(cart1, "PRODUCT_ADDED_TO_CART");
         return "Product added successfully";
     }
 
@@ -66,12 +68,15 @@ public class CartServiceImpl implements CartService {
 //            });
 //        return Cart;
 //        }
+        eventServiceLog.addEvent(cartList, "ALL_PRODUCTS_FETCHED_IN_CART");
+
         return cartList;
     }
 
     @Override
     public String deleteProductFromCart(String productId) {
-         cartRepository.deleteByProductId(productId);
+        cartRepository.deleteByProductId(productId);
+        eventServiceLog.addEvent(productId, "PRODUCT_DELETED_IN_CART");
         return "deleted successfully";
     }
 

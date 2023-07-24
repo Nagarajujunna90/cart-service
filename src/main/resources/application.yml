@@ -4,13 +4,5 @@ server:
 spring:
   application:
     name: user-service
-  datasource:
-    url: jdbc:mysql://localhost:3306/e-cart?useSSL=false&allowPublicKeyRetrieval=true
-    password: root
-    username: root
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    database-platform: org.hibernate.dialect.MySQL8Dialect
-    open-in-view: false
+  profiles:
+    active: local

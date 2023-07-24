@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/e-cart?useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3306/e-cart?useSSL=false
     password: root
     username: root
   jpa:

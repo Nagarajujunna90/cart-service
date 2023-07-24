@@ -1,8 +1,8 @@
 server:
-  port: 8085
+  port: 8087
 
 spring:
   application:
-    name: user-service
+    name: cart-service
   profiles:
     active: local
